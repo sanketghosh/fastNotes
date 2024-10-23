@@ -15,8 +15,22 @@ export default function App() {
             </MainAppLayout>
           }
         />
-        <Route path="/add-note" element={<AddNote />} />
-        <Route path="/note/:id" element={<Note />} />
+        <Route
+          path="/add-note"
+          element={
+            <MainAppLayout>
+              <AddNote />
+            </MainAppLayout>
+          }
+        />
+        <Route
+          path="/note/:id"
+          element={
+            <MainAppLayout>
+              <Note />
+            </MainAppLayout>
+          }
+        />
       </Routes>
     </Router>
   );
