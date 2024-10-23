@@ -18,8 +18,12 @@ export default function MainAppLayout({
           pathname === "/home" ? "hidden" : "block",
         )}
       >
-        <nav className="h-14 border-b w-full"></nav>
-        <div className="p-10">{children}</div>
+        <div className="overflow-y-scroll">
+          <nav className="h-14 border-b w-full md:w-[calc(100vw-350px)] lg:w-[calc(100vw-460px)]"></nav>
+          <div className="p-10 w-full md:w-[calc(100vw-350px)] overflow-y-scroll lg:w-[calc(100vw-460px)]">
+            {children}
+          </div>
+        </div>
       </div>
     </main>
   );

@@ -1,6 +1,6 @@
 export default function AddNote() {
   return (
-    <section>
+    <section className="overflow-y-scroll">
       <input
         type="text"
         placeholder="Untitled."
@@ -9,7 +9,7 @@ export default function AddNote() {
       <textarea
         name=""
         id=""
-        className="p-2 w-full h-fit border-none outline-none bg-transparent"
+        className="p-2 w-full h-fit outline-none bg-transparent border"
         placeholder="Start writing here..."
       ></textarea>
     </section>
