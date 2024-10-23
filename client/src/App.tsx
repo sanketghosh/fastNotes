@@ -1,28 +1,22 @@
+import { AddNote, Home, LandingPage, Note } from "@/pages";
 import { Route, BrowserRouter as Router, Routes } from "react-router-dom";
-import MainAppLayout from "./layouts/main-app-layout";
-import AddNewNote from "./pages/add-new-note";
-import Home from "./pages/home";
+import MainAppLayout from "./layout/main-app-layout";
 
 export default function App() {
   return (
     <Router>
       <Routes>
+        <Route path="/" index={true} element={<LandingPage />} />
         <Route
-          path="/"
+          path="/home"
           element={
             <MainAppLayout>
               <Home />
             </MainAppLayout>
           }
         />
-        <Route
-          path="/add-new-note"
-          element={
-            <MainAppLayout>
-              <AddNewNote />
-            </MainAppLayout>
-          }
-        />
+        <Route path="/add-note" element={<AddNote />} />
+        <Route path="/note/:id" element={<Note />} />
       </Routes>
     </Router>
   );
