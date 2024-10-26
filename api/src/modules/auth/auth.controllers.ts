@@ -25,7 +25,7 @@ export const handleRegisterUser = async (
   res: Response,
 ): Promise<any | void> => {
   try {
-    const { email, password, username } = req.body as RegisterType;
+    const { username, email, password } = req.body as RegisterType;
 
     const user = await db.user.findUnique({
       where: {
