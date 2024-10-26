@@ -1,7 +1,10 @@
+import * as logoutAction from "@/actions/auth/logout-action";
 import { cn } from "@/lib/utils";
 import { useAuthContext } from "@/providers/auth-provider";
+import { useMutation } from "@tanstack/react-query";
 import { ChevronsUpDownIcon, LogOutIcon, User2Icon } from "lucide-react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
+import { toast } from "sonner";
 import { Button, buttonVariants } from "../ui/button";
 import { Popover, PopoverContent, PopoverTrigger } from "../ui/popover";
 import ThemeToggle from "./theme-toggle";
@@ -11,7 +14,26 @@ interface UserMenuProps {
 }
 
 export default function UserMenu({ showDetails = true }: UserMenuProps) {
-  const { user } = useAuthContext();
+  const { user, updateUser } = useAuthContext();
+  const navigate = useNavigate();
+
+
+   const mutation = useMutation({
+     mutationFn: logoutAction.logoutAction,
+     onSuccess: async () => {
+       toast.success("Succesfully logged out user");
+       navigate("/");
+       updateUser(null);
+     },
+     onError: () => {
+       toast.error("Something went wrong.");
+     },
+   });
+
+   function handleLogoutButton() {
+     mutation.mutate();
+   }
+
 
   return (
     <Popover>
@@ -73,7 +95,7 @@ export default function UserMenu({ showDetails = true }: UserMenuProps) {
           <p>Profile</p>
         </Link>
         <ThemeToggle />
-        <Button variant={"destructive"} size={"sm"}>
+        <Button variant={"destructive"} size={"sm"} onClick={handleLogoutButton}>
           <LogOutIcon />
           <p>Logout</p>
         </Button>
