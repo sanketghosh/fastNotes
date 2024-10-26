@@ -25,11 +25,12 @@ export const handleRegisterUser = async (
   res: Response,
 ): Promise<any | void> => {
   try {
-    const { username, email, password } = req.body as RegisterType;
+    const { email, password, username } = req.body as RegisterType;
 
     const user = await db.user.findUnique({
       where: {
         email: email,
+        username: username,
       },
     });
 
@@ -68,9 +69,11 @@ export const handleRegisterUser = async (
         message: "SUCCESS! User has been registered.",
         data: _data,
       });
-  } catch (error) {
-    return res.status(500).json({
+  } catch (error: any) {
+    console.log(error);
+    res.status(500).json({
       message: "ERROR! Something went wrong. Internal server error.",
+      error: error.message,
     });
   }
 };
@@ -144,7 +147,7 @@ export const handleLoginUser = async (
         data: _data,
       });
   } catch (error) {
-    return res.status(500).json({
+    res.status(500).json({
       message: "ERROR! Something went wrong. Internal server error.",
     });
   }
@@ -170,7 +173,7 @@ export const handleLogoutUser = async (
       message: "SUCCESS! You have been logged out.",
     });
   } catch (error) {
-    return res.status(500).json({
+    res.status(500).json({
       message: "ERROR! Something went wrong. Internal server error.",
     });
   }
