@@ -9,6 +9,7 @@ import swaggerUI from "swagger-ui-express";
 dotenv.config();
 
 // LOCAL MODULES
+import authRoutes from "@/modules/auth/auth.routes";
 import swaggerDoc from "./swagger.json";
 
 // ROUTES
@@ -31,6 +32,9 @@ app.use(
     credentials: true,
   }),
 );
+
+// routes
+app.use("/api/v1", authRoutes);
 
 // swagger API docs
 app.use("/api-docs", swaggerUI.serve, swaggerUI.setup(swaggerDoc));
