@@ -43,7 +43,7 @@ export default function LandingPage() {
             </p>
             <div className="flex items-center space-x-4">
               <Link
-                to={"/home"}
+                to={"/auth"}
                 className={cn(
                   buttonVariants({
                     size: "lg",

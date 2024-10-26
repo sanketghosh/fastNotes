@@ -10,7 +10,7 @@ dotenv.config();
 
 // LOCAL MODULES
 import authRoutes from "@/modules/auth/auth.routes";
-import swaggerDoc from "./swagger.json";
+import swaggerDoc from "@/swagger.json";
 
 // ROUTES
 

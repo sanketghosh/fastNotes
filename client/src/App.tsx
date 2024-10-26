@@ -1,4 +1,4 @@
-import { AddNote, Home, LandingPage, Note } from "@/pages";
+import { AddNote, Auth, Home, LandingPage, Note } from "@/pages";
 import { Route, BrowserRouter as Router, Routes } from "react-router-dom";
 import MainAppLayout from "./layout/main-app-layout";
 
@@ -31,6 +31,8 @@ export default function App() {
             </MainAppLayout>
           }
         />
+
+        <Route path="/auth" element={<Auth />} />
       </Routes>
     </Router>
   );
