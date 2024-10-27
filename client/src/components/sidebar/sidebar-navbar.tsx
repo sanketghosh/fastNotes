@@ -10,11 +10,11 @@ import { NAV_ITEMS } from "@/components/sidebar/app-sidebar";
 
 export default function SidebarNavbar() {
   return (
-    <nav className="lg:w-[60px] w-0 border-r hidden lg:fixed top-0 h-screen bg-background min-h-screen max-h-screen lg:flex py-3 px-2 flex-col items-center justify-between">
-      <div className="flex w-full items-center gap-4 flex-col">
+    <nav className="top-0 hidden h-screen max-h-screen min-h-screen w-0 flex-col items-center justify-between border-r bg-background px-2 py-3 lg:fixed lg:flex lg:w-[60px]">
+      <div className="flex w-full flex-col items-center gap-4">
         <Link
-          to={"/"}
-          className="bg-blue-600 text-white rounded-md size-10 flex items-center justify-center"
+          to={"/home"}
+          className="flex size-10 items-center justify-center rounded-md bg-primary text-white"
         >
           <ZapIcon className="size-7" />
         </Link>
@@ -22,7 +22,7 @@ export default function SidebarNavbar() {
           <Link
             key={item.url}
             to={item.url}
-            className="size-10 border hover:bg-secondary/30 transition-all flex items-center justify-center rounded-md text-muted-foreground hover:text-primary"
+            className="flex size-10 items-center justify-center rounded-md border text-muted-foreground transition-all hover:bg-secondary/30 hover:text-primary"
           >
             {item.icon}
           </Link>

@@ -26,9 +26,10 @@ model User {
 }
 
 model Note {
-  id    String  @id @default(cuid())
-  title String
-  body  String?
+  id        String   @id @default(cuid())
+  title     String
+  body      String?
+  isStarred Boolean? @default(false)
 
   userId String
   user   User   @relation(fields: [userId], references: [id])

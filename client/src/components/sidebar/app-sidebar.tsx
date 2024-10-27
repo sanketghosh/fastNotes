@@ -1,7 +1,7 @@
 // COMPONENTS
 import SidebarNavbar from "@/components/sidebar/sidebar-navbar";
 import SidebarNotesItems from "@/components/sidebar/sidebar-notes-items";
-import { HomeIcon, PlusCircleIcon, TrashIcon } from "lucide-react";
+import { HomeIcon, PlusCircleIcon, StarIcon, TrashIcon } from "lucide-react";
 import { useLocation } from "react-router-dom";
 
 export const NAV_ITEMS = [
@@ -14,6 +14,11 @@ export const NAV_ITEMS = [
     icon: <PlusCircleIcon className="size-5 md:size-6" />,
     text: "add note",
     url: "/add-note",
+  },
+  {
+    icon: <StarIcon className="size-5 md:size-6" />,
+    text: "starred",
+    url: "/starred-notes",
   },
   {
     icon: <TrashIcon className="size-5 md:size-6" />,

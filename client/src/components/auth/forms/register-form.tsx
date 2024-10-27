@@ -42,7 +42,7 @@ export default function RegisterForm() {
     mutationFn: registerAction.registerAction,
     onSuccess: async (data) => {
       toast.success(data.message);
-      localStorage.setItem("user_data", JSON.stringify(data));
+      localStorage.setItem("user_data", JSON.stringify(data.data));
       navigate(`${DEFAULT_AUTH_REDIRECT_ROUTE}`);
     },
     onError: (error: Error) => {

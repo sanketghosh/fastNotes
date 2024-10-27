@@ -1,18 +1,14 @@
 // components
 import LoginForm from "@/components/auth/forms/login-form";
 import RegisterForm from "@/components/auth/forms/register-form";
+import AppMainLink from "@/components/common/app-main-link";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
-import { ZapIcon } from "lucide-react";
-import { Link } from "react-router-dom";
 
 export default function Auth() {
   return (
     <main className="flex min-h-screen w-full flex-col items-center justify-center space-y-5 p-4">
       <div className="flex w-[350px] flex-col items-center space-y-2 sm:w-[400px] md:w-[420px] lg:w-[450px]">
-        <Link to={"/"} className="flex items-center gap-1">
-          <ZapIcon />
-          <p className="text-xl font-bold">fastNotes</p>
-        </Link>
+        <AppMainLink href="/" iconSize="size-7" textSize="text-xl" />
         <h2 className="text-center">
           Fully open source link shortener. Make short links in seconds. Make
           short links in seconds.{" "}

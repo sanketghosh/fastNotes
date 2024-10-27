@@ -1,38 +1,62 @@
-import { AddNote, Auth, Home, LandingPage, Note } from "@/pages";
+// PACKAGES
 import { Route, BrowserRouter as Router, Routes } from "react-router-dom";
-import MainAppLayout from "./layout/main-app-layout";
+
+// COMPONENTS
+import MainAppLayout from "@/layout/main-app-layout";
+import { AddNote, Auth, Home, LandingPage, Note } from "@/pages";
+import { AfterAuthRedirect, NoAuthNoAccess } from "@/protected";
 
 export default function App() {
   return (
     <Router>
       <Routes>
-        <Route path="/" index={true} element={<LandingPage />} />
+        <Route
+          path="/"
+          index={true}
+          element={
+            <AfterAuthRedirect>
+              <LandingPage />
+            </AfterAuthRedirect>
+          }
+        />
+        <Route
+          path="/auth"
+          element={
+            <AfterAuthRedirect>
+              <Auth />
+            </AfterAuthRedirect>
+          }
+        />
         <Route
           path="/home"
           element={
-            <MainAppLayout>
-              <Home />
-            </MainAppLayout>
+            <NoAuthNoAccess>
+              <MainAppLayout>
+                <Home />
+              </MainAppLayout>
+            </NoAuthNoAccess>
           }
         />
         <Route
           path="/add-note"
           element={
-            <MainAppLayout>
-              <AddNote />
-            </MainAppLayout>
+            <NoAuthNoAccess>
+              <MainAppLayout>
+                <AddNote />
+              </MainAppLayout>
+            </NoAuthNoAccess>
           }
         />
         <Route
           path="/note/:id"
           element={
-            <MainAppLayout>
-              <Note />
-            </MainAppLayout>
+            <NoAuthNoAccess>
+              <MainAppLayout>
+                <Note />
+              </MainAppLayout>
+            </NoAuthNoAccess>
           }
         />
-
-        <Route path="/auth" element={<Auth />} />
       </Routes>
     </Router>
   );

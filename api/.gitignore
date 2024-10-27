@@ -176,5 +176,7 @@ dist
 
 
 prisma/migrations
+prisma/fastnotes.db
+prisma/fastnotes.db-journal
 prisma/dev.db
 prisma/dev.db-journal
